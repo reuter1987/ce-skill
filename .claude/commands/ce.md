@@ -56,7 +56,7 @@ Isso serve apenas para identificar quem esta operando. Os schemas e credenciais 
 
 ### 4. Carregar relatorio de conformidade de turmas (OBRIGATORIO)
 
-ANTES de qualquer consulta ou acao no CE, voce DEVE buscar o relatorio mais recente de conformidade de turmas no Cloudflare. Isso garante que voce sabe o estado atual de todas as turmas.
+ANTES de qualquer consulta ou acao no CE/Oracle OU no Bitrix, voce DEVE buscar o relatorio mais recente de conformidade de turmas no Cloudflare. Isso garante que voce sabe o estado atual de todas as turmas. SEMPRE consulte este relatorio - seja para mexer no Oracle, no Bitrix, ou em qualquer integracao entre os dois.
 
 Faca um WebFetch para:
 ```
@@ -77,11 +77,16 @@ O HTML contem:
 - Problemas detectados (email invalido, telefone divergente, apelido errado, etc.)
 - Mapeamento Bitrix ID <> Oracle NRO_CONTROLE <> Schema (PRP ou CBR)
 
-USE ESSAS INFORMACOES para:
+USE ESSAS INFORMACOES SEMPRE para:
 - Saber quais turmas existem e seus codigos
 - Identificar qual schema (PRP ou CBR) uma turma pertence
 - Saber o NRO_CONTROLE correto de cada turma no Oracle
+- Saber o Bitrix ID (company ID) de cada turma
+- Cruzar dados entre Bitrix e Oracle corretamente
 - Verificar se ha problemas pendentes antes de agir
+- Nao tomar decisoes sobre turmas sem antes checar o relatorio
+
+REGRA: se o usuario pedir qualquer coisa envolvendo turmas, clientes, contratos, faturamento, inadimplencia, leads, deals, contatos, empresas - no Bitrix OU no Oracle - consulte este relatorio PRIMEIRO. Ele e a fonte da verdade para o mapeamento entre os dois sistemas.
 
 Se o WebFetch falhar (ex: sem internet), avise o usuario e continue com as informacoes que tem na skill.
 
